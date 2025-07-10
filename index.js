@@ -24,7 +24,7 @@ const client = new MongoClient(uri, {
 async function run() {
   try {
     // Connect the client to the server
-    await client.connect();
+    client.connect();
     // Send a ping to confirm a successful connection
 
 const tasksCollection = client.db('freelance_marketplaceDB').collection('tasks');
@@ -123,8 +123,6 @@ run().catch(console.dir);
 app.get('/', (req, res) => {
     res.send('Freelance Marketplace Server is Running')
 })
-// app.listen(port, () => {
-//     console.log(`Server is running on port ${port}`)
-// })
-
-module.exports = app; // ✅ Export the app for Vercel
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`)
+})
